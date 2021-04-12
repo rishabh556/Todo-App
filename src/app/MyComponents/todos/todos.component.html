@@ -1,0 +1,21 @@
+
+<div class='container'>
+<h1 class="text-center mb-3"> Todo List By Rishabh Tiwari!</h1>
+    
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<h5>Your Todos: </h5>
+
+<!-- if condition is true -->
+<div *ngIf="this.todos.length===0; else elseBlock">No Todo's to show!!</div>
+
+
+<!-- if condition gets false -->
+<ng-template #elseBlock>
+   <div *ngFor="let todo of todos">
+      <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-item> 
+   </div>
+</ng-template>
+<!-- todos is array's name that we have declared in todos.compnent.ts -->
+<!-- *ngFor is angular's directive, basically it works like a for loop -->
+<!-- {{todo.sno}}--{{todo.title}}--{{todo.description}} -->
+</div>
